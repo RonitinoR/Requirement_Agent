@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/RequirementAgent.Api.props" />
+</Project>

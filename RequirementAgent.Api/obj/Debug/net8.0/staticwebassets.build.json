@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "C7pSPh7CCQIEG2OaWoJbAT5lWKqc5FdrpSfps+DhdX4=",
+  "Source": "RequirementAgent.Api",
+  "BasePath": "_content/RequirementAgent.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
