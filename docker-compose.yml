@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  api:
+    build: 
+      context: ./src/backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=database;Database=RequirementAgent;User Id=sa;Password=YourPassword123;TrustServerCertificate=true;
+      - JwtSettings__Secret=your-super-secret-key-here-minimum-32-characters
+      - FileUpload__UploadPath=/app/uploads
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - database
+  
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000/api
+    depends_on:
+      - api
+  
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourPassword123
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  ai-service:
+    build:
+      context: ./src/ai-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - AI_PROVIDER=openai
+      - OPENAI_API_KEY=your-openai-api-key
+      - ANTHROPIC_API_KEY=your-claude-api-key
+    profiles:
+      - ai
+
+volumes:
+  sqlserver_data:
