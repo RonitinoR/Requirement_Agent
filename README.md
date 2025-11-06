@@ -187,55 +187,9 @@ MAX_FILE_SIZE_MB=50
 # AI Service (Optional)
 AI_PROVIDER="openai"
 OPENAI_API_KEY="your-openai-key"
-ANTHROPIC_API_KEY="your-claude-key"
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Support
-
-For support and questions:
-1. Check the documentation
-2. Review GitHub issues
-3. Contact the development team
-
-## Roadmap
-
-### Phase 1: Foundation (Weeks 1-4)
-- Authentication and basic admin functionality
-- Permit types and questions management
-- Client form foundation
-
-### Phase 2: Core Features (Weeks 5-8)
-- Client intake and file uploads
-- Submission management
-- Document generation
-
-### Phase 3: Polish & AI (Weeks 9-12)
-- Performance optimization
-- AI integration
-- Production deployment
-
-## Changelog
-
-### Version 1.0.0 (Planned)
-- Initial release with core MVP features
-- Admin and client interfaces
-- Document generation
-- File upload system
-
-### Future Versions
-- Advanced AI features
-- PDF/DOCX rendering
-- SSO integration
-- Advanced analytics
