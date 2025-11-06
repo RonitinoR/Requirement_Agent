@@ -1,7 +1,18 @@
-# Requirement Agent - README
+# Requirement Agent
 
-## Overview
-The Requirement Agent is a comprehensive system that collects project requirements from clients through guided, permit-type-specific flows, stores responses and uploads, and generates ready-to-share documents (Use Case, User Stories, Data Dictionary). Optional AI integration can produce additional AI Pack documents.
+[![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/)
+[![React](https://img.shields.io/badge/React-18.0-blue.svg)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-green.svg)](https://openai.com/)
+
+> **AI-powered requirements gathering system that transforms static documents into intelligent conversations**
+
+## 🎯 Overview
+
+The Requirement Agent revolutionizes requirements gathering by converting traditional static forms and documents into intelligent, ChatGPT-like conversations. Built for the **County Adopt-A-Highway Volunteer Program**, it transforms complex tabular requirements into natural dialogue flows that improve user experience while capturing all necessary data.
+
+### 🚀 Key Innovation
+Instead of filling out complex forms, users have **natural conversations** with an AI assistant that guides them through requirements gathering, making the process more engaging and reducing abandonment rates.
 
 ## Features
 
