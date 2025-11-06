@@ -29,21 +29,21 @@ const LoginPage: React.FC = () => {
 
     try {
       // Mock authentication for demo purposes
-      if (email === 'admin@demo.com' && password === 'demo') {
+      if (email === 'admin@example.com' && password === 'Admin123!') {
         setAuth({ 
           token: 'demo-admin-token', 
           role: 'Admin', 
-          email: 'admin@demo.com' 
+          email: 'admin@example.com' 
         });
         navigate(redirectTo, { replace: true });
         return;
       }
       
-      if (email === 'client@demo.com' && password === 'demo') {
+      if (email === 'client@example.com' && password === 'Client123!') {
         setAuth({ 
           token: 'demo-client-token', 
           role: 'Client', 
-          email: 'client@demo.com' 
+          email: 'client@example.com' 
         });
         navigate(redirectTo, { replace: true });
         return;
@@ -55,7 +55,7 @@ const LoginPage: React.FC = () => {
       navigate(redirectTo, { replace: true });
     } catch (err) {
       console.error(err);
-      setError('Login failed. Use demo credentials: admin@demo.com / demo or client@demo.com / demo');
+      setError('Login failed. Use demo credentials: admin@example.com / Admin123! or client@example.com / Client123!');
     } finally {
       setLoading(false);
     }
@@ -90,8 +90,8 @@ const LoginPage: React.FC = () => {
               </Button>
               <Typography variant="body2" color="text.secondary" textAlign="center">
                 <strong>Demo Credentials:</strong><br />
-                Admin: admin@demo.com / demo<br />
-                Client: client@demo.com / demo
+                Admin: admin@example.com / Admin123!<br />
+                Client: client@example.com / Client123!
               </Typography>
             </Stack>
           </Box>

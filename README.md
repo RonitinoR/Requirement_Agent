@@ -80,9 +80,11 @@ npm run dev
 - **API**: http://localhost:5000
 - **Swagger**: http://localhost:5000/swagger
 
-### Default Credentials
+### 🔐 Demo Credentials
 - **Admin**: `admin@example.com` / `Admin123!`
 - **Client**: `client@example.com` / `Client123!`
+
+*Note: These work as mock credentials in the frontend, or as real credentials if the backend database is connected.*
 
 ## Project Structure
 
