@@ -69,5 +69,3 @@ var response = await httpClient.PostAsJsonAsync(
 
 - `OPENAI_API_KEY` - Your OpenAI API key (required)
 - `PORT` - Service port (default: 8000)
-
-That's it! Simple and focused for your demo. 🚀
