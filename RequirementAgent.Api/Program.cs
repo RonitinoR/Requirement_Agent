@@ -6,6 +6,7 @@ using RequirementAgent.Api.Configurations;
 using RequirementAgent.Api.Data;
 using RequirementAgent.Api.Services.Auth;
 using RequirementAgent.Api.Services.DocumentGeneration;
+using RequirementAgent.Api.Services.AI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,15 +15,36 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(JwtOptions.SectionName));
+builder.Services.Configure<OpenAIOptions>(builder.Configuration.GetSection(OpenAIOptions.SectionName));
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+{
+    if (builder.Environment.IsDevelopment())
+    {
+        // Use SQLite for local development
+        options.UseSqlite(connectionString);
+    }
+    else
+    {
+        // Use SQL Server for production
+        options.UseSqlServer(connectionString);
+    }
+});
 
+// Add memory cache for conversation state management
+builder.Services.AddMemoryCache();
+
+// Add HTTP client for OpenAI API
+builder.Services.AddHttpClient<IOpenAIService, OpenAIService>();
+
+// Register services
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IDocumentGenerationService, DocumentGenerationService>();
+builder.Services.AddScoped<IOpenAIService, OpenAIService>();
+builder.Services.AddSingleton<IConversationStateManager, ConversationStateManager>();
 
 builder.Services.AddCors(options =>
 {
@@ -62,11 +84,13 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+// Enable Swagger in all environments for demo purposes
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "RequirementAgent API v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseStaticFiles();
 app.UseCors("Default");

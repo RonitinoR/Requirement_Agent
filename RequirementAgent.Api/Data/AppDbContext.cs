@@ -34,13 +34,12 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             .HasConversion<string>()
             .HasMaxLength(50);
 
+        // Configure JSON columns - database agnostic
         modelBuilder.Entity<Question>()
-            .Property(q => q.OptionsJson)
-            .HasColumnType("nvarchar(max)");
+            .Property(q => q.OptionsJson);
 
         modelBuilder.Entity<Submission>()
-            .Property(s => s.AnswersJson)
-            .HasColumnType("nvarchar(max)");
+            .Property(s => s.AnswersJson);
 
         var adminId = Guid.NewGuid();
         var clientId = Guid.NewGuid();
